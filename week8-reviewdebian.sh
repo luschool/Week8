@@ -107,7 +107,7 @@ echo "This should make events in the kernel and udev for the newly created servi
 echo "The compinfo.txt file that was created earlier will be copied to the mount location"; echo
 echo "Expect a few more password prompts."; read -p "Press Enter when you're ready to continue."
 
-mkdir -p $name/Data/filesysmnt/tmp; dd if=/dev/zero of=~/$name/Data/testimage.img bs=1M count=24; mkfs -t ext4 ~/$name/Data/testimage.img
+mkdir -p $name/Data/filesysmnt/tmp; dd if=/dev/zero of=~/$name/Data/testimage.img bs=1M count=24; sudo mkfs -t ext4 ~/$name/Data/testimage.img
 cd $name/Data ; sudo mount testimage.img filesysmnt/tmp; echo "Our new mount -"
 lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | grep -i "filesys\|NAME"; sudo cp compinfo.txt filesysmnt/tmp/compinfo.txt;
 sudo umount filesysmnt/tmp; rm -r filesysmnt/; systemctl stop UdevadmMonitor.service
@@ -127,7 +127,7 @@ sudo journalctl --unit=UdevadmMonitor.service > $name/Data/UdevadmMonitor.log
 echo; echo "Although they're hard to decipher, multiple events should've been captured."
 echo "Some systemd units have symbolic links to different names for what appears to be compatability reasons."
 echo "With grep to filter an ls command all the links in the /lib/systemd/system/ will appear -"
-ls -la /lib/systemd/system/ | grep "\->"; echo
+ls -la /lib/systemd/system/ | grep "\->" | less -p "Press Shift+Q to exit"; echo
 
 read -p "Press Enter when youre ready to continue."
 clear
