@@ -28,7 +28,7 @@ clear
 #These folders will be used for logs, backups, and anything else the script wants to save.
 echo "First the directory $name will be made in the ~home directory."
 echo "Next directories ~/$name/Data and ~/$name/Data/$(date +%B%d) will be made."
-echo "These directories will the focus most of the outputs and commands."
+echo "These directories will be where most commands focus output."
 
 #By Using the mkdir -p (Parent) flag I will make all directories at once. I will then use
 #ls with the -d (directory) flag and * wildcard to list the newly created directories.
