@@ -1,4 +1,5 @@
 #!/bin/bash
+# This script was made in arch linux. A few compadibility issues with other distros that I'm working on.
 
 #Clear the current terminal and move to the ~home directory
 clear
@@ -110,7 +111,7 @@ echo "Expect a few more password prompts."; read -p "Press Enter when you're rea
 mkdir -p $name/Data/filesysmnt/tmp; dd if=/dev/zero of=~/$name/Data/testimage.img bs=1M count=24; mkfs -t ext4 ~/$name/Data/testimage.img
 cd $name/Data ; sudo mount testimage.img filesysmnt/tmp; echo "Our new mount -"
 lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | grep -i "filesys\|NAME"; sudo cp compinfo.txt filesysmnt/tmp/compinfo.txt;
-sudo umount filesysmnt/tmp; rmdir filesysmnt/tmp; rmdir filesysmnt; systemctl stop UdevadmMonitor.service
+sudo umount filesysmnt/tmp; rm -r filesysmnt/; systemctl stop UdevadmMonitor.service
 
 echo "Directory filesysmnt/tmp/ has been unmounted. Running hexdump of imagefile.img to see if it contains the compinfo.txt data."
 echo "As always pressing Shift+Q at the same time will exit the less view."; echo; read -p "Press Enter when you're ready to view the hexdump: "
