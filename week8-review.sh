@@ -125,8 +125,8 @@ sudo journalctl --unit=UdevadmMonitor.service | less -P "Use Space and b to scro
 sudo journalctl --unit=UdevadmMonitor.service > $name/Data/UdevadmMonitor.log
 echo; echo "Although they're hard to decipher, multiple events should've been captured."
 echo "Some systemd units have symbolic links to different names for what appears to be compatability reasons."
-echo "With grep to filter an ls command all the links in the /usr/lib/systemd/system/ will appear -"
-ls -la /usr/lib/systemd/system/ | grep "\->"; echo
+echo "With grep to filter an ls command all the links in the /lib/systemd/system/ will appear -"
+ls -la /lib/systemd/system/ | grep "\->"; echo
 
 read -p "Press Enter when youre ready to continue."
 clear
