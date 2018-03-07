@@ -28,7 +28,7 @@ clear
 #These folders will be used for logs, backups, and anything else the script wants to save.
 echo "First the directory $name will be made in the ~home directory."
 echo "Next directories ~/$name/Data and ~/$name/Data/$(date +%B%d) will be made."
-echo "These directories will be where we focus most of our outputs and commands."
+echo "These directories will the focus most of the outputs and commands."
 
 #By Using the mkdir -p (Parent) flag I will make all directories at once. I will then use
 #ls with the -d (directory) flag and * wildcard to list the newly created directories.
@@ -73,7 +73,7 @@ echo
 clear
 
 echo "First using journalctl with the --priority=err flag we will display all error messages and above in the logs."
-echo "Then we will use dmesg | grep "Error" to see if we get the same results."
+echo "Then using dmesg | grep Error to see if we get the same results."
 echo "I am going to output the commands to two seperate files and run the diff command"
 
 sudo journalctl --priority=err > $name/Data/journalerrorlogs.txt
@@ -94,7 +94,7 @@ echo "Creating a service to monitor kernel and udev events with udevadm monitor.
 echo "You may be prompted for a sudo password multiple times during the process of creating, moving, and starting the service."
 echo; read -p "Press Enter when you're ready to start the process."
 
-#This might not work on other distros. The location may be different for the ExecStart
+#This might not work on other distros. Use ExecStart=/sbin/udevadm for Debian.
 echo "[Unit]" > UdevadmMonitor.service; echo "Description=Monitor udev and kernel events" >> UdevadmMonitor.service
 echo >> UdevadmMonitor.service; echo "[Service]" >> UdevadmMonitor.service
 echo "ExecStart=/usr/bin/udevadm monitor" >> UdevadmMonitor.service; chmod +x UdevadmMonitor.service;
@@ -128,7 +128,7 @@ echo "Some systemd units have symbolic links to different names for what appears
 echo "With grep to filter an ls command all the links in the /usr/lib/systemd/system/ will appear -"
 ls -la /usr/lib/systemd/system/ | grep "\->"; echo
 
-read -P "Press Enter when youre ready to continue."
+read -p "Press Enter when youre ready to continue."
 clear
 
 #The goal here is to archive and zip the contents of $name/Data/ and move the archive to the Data/*Currentdate*
