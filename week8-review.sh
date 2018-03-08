@@ -112,10 +112,12 @@ lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | grep -i "filesys\|NAME"; sudo cp com
 sudo umount filesysmnt/tmp; rm -r filesysmnt/; systemctl stop UdevadmMonitor.service
 
 echo "Directory filesysmnt/tmp/ has been unmounted. Running hexdump of imagefile.img to see if it contains the compinfo.txt data."
-echo "As always pressing Shift+Q at the same time will exit the less view."; echo; read -p "Press Enter when you're ready to view the hexdump: "
+echo; read -p "Press Enter when you're ready to view the hexdump: "
 clear
 hexdump -C testimage.img | less -P "Use Space and b to scroll. Press Shift+Q to close" ; hexdump -C testimage.img > hexdump.txt
+
 cd
+clear
 
 echo "The compinfo.txt contents should of been visible part way down the hexdump."
 echo "The newly created service has been stopped. The command journalctl is used to check the log to see the gathered data."
@@ -145,7 +147,7 @@ cd
 #removing and refreshing systemd services
 sudo rm /etc/systemd/system/UdevadmMonitor.service; systemctl daemon-reload
 echo; echo "Current contents of $name/Data and $name/Data/$(date +%B%d)"
-ls -l $name/Data/ $name/Data/$(date +%B%d)
+ls $name/Data/ $name/Data/$(date +%B%d)
 echo
 echo "This is the end of the script. I hope you found it informative and helpful."; echo
 echo "If you have any issues you want to open please do it at github.com/luschool"
