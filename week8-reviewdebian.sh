@@ -58,9 +58,9 @@ echo -n "CPU Cores:           " >> compinfo.txt; nproc >> compinfo.txt; echo >> 
 
 # The ramsize is returned in a kilobyte value and I want to convert it to gigabytes. I will assign the trimmed output of vmstat
 #to a variable and then use the expr command to devide the variable with to get an approximate GB ram size.
-echo "[RAM]" >> compinfo.txt; ram=$(vmstat -s | grep -i 'total m' | tr -dc 0-9); ramgb=$(expr $ram / 1024000)
+echo "[RAM]" >> compinfo.txt; ram=$(vmstat -s | grep -i 'total m' | tr -dc 0-9); ramgb=$(expr $ram / 1000000)
 echo "RAM Total in kilobytes: $ram" >> compinfo.txt; echo "RAM Total in gigabytes: $ramgb (Approximate)" >> compinfo.txt
-freeram=$(vmstat -s | grep -i 'free m' | tr -dc 0-9); freeramgb=$(expr $freeram / 1024000)
+freeram=$(vmstat -s | grep -i 'free m' | tr -dc 0-9); freeramgb=$(expr $freeram / 1000000)
 echo "RAM Free in kilobytes: $freeram" >> compinfo.txt; echo "RAM Free in gigabytes: $freeramgb (Approximate)" >> compinfo.txt; echo >> compinfo.txt
 echo "[Video Adapter And Display]" >> compinfo.txt; lspci | grep -i 'VGA\|3D' | cut -d" " -f 2-15 >> compinfo.txt; echo >> compinfo.txt
 xrandr | grep -i 'disconnected\|connected\|*' >> compinfo.txt; echo >> compinfo.txt
