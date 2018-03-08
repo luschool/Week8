@@ -117,14 +117,13 @@ echo "As always pressing Shift+Q at the same time will exit the less view."; ech
 clear
 hexdump -C testimage.img | less -P "Use Space and b to scroll. Press Shift+Q to close" ; hexdump -C testimage.img > hexdump.txt
 cd
-
+clear
 echo "The compinfo.txt contents should of been visible part way down the hexdump."
 echo "The newly created service has been stopped. The command journalctl is used to check the log to see the gathered data."
-echo; echo "As always pressing Shift+Q at the same time will exit the less view."
-echo; read -p "Press Enter when you're ready to view the UdevadmMonitor.service log. "
-sudo journalctl --unit=UdevadmMonitor.service | less -P "Use Space and b to scroll. Press Shift+Q to close";
-sudo journalctl --unit=UdevadmMonitor.service > $name/Data/UdevadmMonitor.log
-echo; echo "Although they're hard to decipher, multiple events should've been captured."
+echo; echo; read -p "Press Enter when you're ready to view the UdevadmMonitor.service log. "
+sudo journalctl --unit=UdevadmMonitor.service | less -P "Use Space and b to scroll. Press Shift+Q to close"
+sudo journalctl --unit=UdevadmMonitor.service > $name/Data/UdevadmMonitor.log;
+echo; echo "Although they're hard to decipher, multiple events should've been captured."; echo
 echo "Some systemd units have symbolic links to different names for what appears to be compatability reasons."
 echo "With grep to filter an ls command all the links in the /lib/systemd/system/ will appear -"; echo
 read -p "Press Enter when youre ready to continue."
@@ -146,7 +145,7 @@ cd
 #removing and refreshing systemd services
 sudo rm /etc/systemd/system/UdevadmMonitor.service; systemctl daemon-reload
 echo; echo "Current contents of $name/Data and $name/Data/$(date +%B%d)"
-ls -l $name/Data/ $name/Data/$(date +%B%d)
+ls $name/Data/ $name/Data/$(date +%B%d)
 echo
 echo "This is the end of the script. I hope you found it informative and helpful."; echo
 echo "If you have any issues you want to open please do it at github.com/luschool"
