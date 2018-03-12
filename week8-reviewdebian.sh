@@ -202,5 +202,5 @@ sudo rm /etc/systemd/system/UdevadmMonitor.service; systemctl daemon-reload
 echo; echo "Current contents of $name/Data and $name/Data/$(date +%B%d)"
 ls $name/Data/ $name/Data/$(date +%B%d)
 echo
-echo "This is the end of the script. I hope you found it informative and helpful."; echo
+echo "This is the end of the script. I hope you found it informative and helpful."; echo "The directory $name/ has been left in your home directory if you would like to explore it."; echo
 echo "If you have any issues you want to open please do it at github.com/luschool"
