@@ -1,5 +1,6 @@
 #!/bin/bash
-# This script was made in arch linux. A few compadibility issues with other distros that I'm working on.
+# This script was made in arch linux. Try the week8-reviewdebian.sh if using another distro.
+# Please run this with bash. Not currently working with dash
 
 #Clear the current terminal and move to the ~home directory
 clear
