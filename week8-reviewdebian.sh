@@ -11,7 +11,7 @@ echo "Hello what is your first name?"
 read -p "First Name: " name unwanted
 echo
 
-echo -n "Hello $name, I hope you're having a wonderful " && date +%A' '%B%e
+echo -n "Hello $name, I hope you're having a wonderful " && date +%A' '%B' '%e
 echo 
 echo "This script is intended to be as user friendly as possible."; echo "Each step and process should have clear directions and output."
 echo "I suggest expanding the terminal window for the best reading experience."
@@ -78,7 +78,7 @@ echo "Then using dmesg | grep Error to see if we get the same results."
 echo "Outputting the commands to two seperate files and run the diff command"
 
 sudo journalctl --priority=err > $name/Data/journalerrorlogs.txt
-dmesg | grep -i "Error" > $name/Data/dmesgerrorlogs.txt
+sudo dmesg | grep -i "Error" > $name/Data/dmesgerrorlogs.txt
 
 
 read -p "Press Enter when you're ready to run the diff command."
